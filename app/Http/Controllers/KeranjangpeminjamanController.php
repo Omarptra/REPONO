@@ -54,7 +54,7 @@ class KeranjangpeminjamanController extends Controller
                         if ($request->status == "Siswa") {
                             DB::table('keranjang_peminjaman')->insert([
                                 'nama_peminjam' =>  ucwords($request->nama_peminjaman),
-                                'status' =>  $request->status." kelas ".$request->kelasSiswa." ".$request->jurusan." ".$request->jurusanId,
+                                'status' =>  $request->status." | ".$request->kelasSiswa." ".$request->jurusan." ".$request->jurusanId,
                                 'id_barang' =>  $request->id_barang[$a],
                                 'jumlah_pinjam' => $request->jumlah[$a],
                                 'tanggal_pinjam' => $request->tanggal_pinjam,
@@ -65,7 +65,7 @@ class KeranjangpeminjamanController extends Controller
                         } else {
                             DB::table('keranjang_peminjaman')->insert([
                                 'nama_peminjam' =>  ucwords($request->nama_peminjaman),
-                                'status' =>   $request->status." jurusan ".$request->jurusan,
+                                'status' =>   $request->status." | ".$request->jurusan,
                                 'id_barang' =>  $request->id_barang[$a],
                                 'jumlah_pinjam' => $request->jumlah[$a],
                                 'tanggal_pinjam' => $request->tanggal_pinjam,
@@ -90,18 +90,6 @@ class KeranjangpeminjamanController extends Controller
 
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Barang  $barang
-     * @return \Illuminate\Http\Response
-     */
-
-    public function show(Barang $barang)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Barang  $barang
@@ -111,6 +99,7 @@ class KeranjangpeminjamanController extends Controller
     {
 
         $peminjaman2 = DB::table('keranjang_peminjaman')->where('id_peminjaman', $id)->first();
+        $jurusans = DB::table('jurusans')->get();
         $peminjaman = DB::table("keranjang_peminjaman")
             ->join('barangs', function ($join) {
                 $join->on('keranjang_peminjaman.id_barang', '=', 'barangs.id_barang');
@@ -118,7 +107,7 @@ class KeranjangpeminjamanController extends Controller
 
         $barang = DB::table('barangs')->get();
 
-        return view('keranjang_peminjaman.edit', compact('peminjaman2', 'peminjaman', 'barang'));
+        return view('keranjang_peminjaman.edit', compact('peminjaman2', 'peminjaman', 'barang', 'jurusans'));
     }
 
     /**
@@ -157,14 +146,26 @@ class KeranjangpeminjamanController extends Controller
             Alert::error('Jumlah tidak boleh melewati stok', 'Gagal');
             return redirect()->back();
         } else {
-            DB::table('keranjang_peminjaman')->where('id_peminjaman', $request->id_peminjaman)->update([
-                'nama_peminjam' => $request->nama_peminjaman,
-                'status' => $request->status,
-                'id_barang' => $request->id_barang,
-                'jumlah_pinjam' => $request->jumlah,
-                'tanggal_pinjam' => $request->tanggal_pinjam,
-                'tanggal_kembali' => $request->tanggal_kembali
-            ]);
+            if ($request->status == "Siswa") {
+                DB::table('keranjang_peminjaman')->where('id_peminjaman', $request->id_peminjaman)->update([
+                    'nama_peminjam' =>  ucwords($request->nama_peminjaman),
+                    'status' =>  $request->status." kelas ".$request->kelasSiswa." ".$request->jurusan." ".$request->jurusanId,
+                    'id_barang' =>  $request->id_barang,
+                    'jumlah_pinjam' => $request->jumlah,
+                    'tanggal_pinjam' => $request->tanggal_pinjam,
+                    'tanggal_kembali' => $request->tanggal_kembali,
+                ]);
+
+            } else {
+                DB::table('keranjang_peminjaman')->where('id_peminjaman', $request->id_peminjaman)->update([
+                    'nama_peminjam' =>  ucwords($request->nama_peminjaman),
+                    'status' =>   $request->status." jurusan ".$request->jurusan,
+                    'id_barang' =>  $request->id_barang,
+                    'jumlah_pinjam' => $request->jumlah,
+                    'tanggal_pinjam' => $request->tanggal_pinjam,
+                    'tanggal_kembali' => $request->tanggal_kembali,
+                ]);
+            }
         }
         // alihkan halaman ke halaman pegawai
         Alert::success('Success', 'Data Telah Terupdate');

@@ -13,6 +13,11 @@
                     <td>{{$peminjaman2->nama_peminjam}}</td>
                 </tr>
                 <tr>
+                    <th>Status Peminjam</th>
+                    <th>:</th>
+                    <td>{{$peminjaman2->status}}</td>
+                </tr>
+                <tr>
                     <th>Nama Barang</th>
                     <th>:</th>
                      @foreach ($barang as $r)
@@ -37,9 +42,9 @@
                     <td>{{$peminjaman2->tanggal_kembali}}</td>
                 </tr>
                 <tr>
-                    <th>Status</th>
+                    <th>Keterangan</th>
                     <th>:</th>
-                    <td>{{$peminjaman2->status}}</td>
+                    <td>{{$peminjaman2->keterangan}}</td>
                 </tr>
             </thead>
         </table>

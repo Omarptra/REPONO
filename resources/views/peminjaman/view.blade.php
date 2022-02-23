@@ -1,11 +1,11 @@
 @extends('layouts.layout')
 @section('content')
 <title>Data Peminjaman</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 </div>
- <div class="row"> 
+ <div class="row">
   <div class="col-xl-6 col-md-12 mb-4">
     <div class="card border-left-dark shadow h-100 py-2">
       <div class="card-body">
@@ -47,7 +47,7 @@
     {{-- <button class="btn btn-success" data-toggle="modal" data-target="#tambah">Tambah Data</button>--}}
     <a href="/peminjaman/export_excel" class="btn btn-warning my-3" target="_blank">EXPORT EXCEL</a>
       <br>
-      <br> 
+      <br>
      <table id="example" class="table table-bordered js-basic-example dataTable" cellspacing="0" width='100%'>
           <thead>
             <tr>
@@ -100,7 +100,7 @@
                           <option selected disabled>-----Pilih Jenis Barang-----</option>
                           @foreach ($barang as $j)
                           <option value="{{$j->id_barang}}">{{$j->nama_barang}}</option>
-                          @endforeach  
+                          @endforeach
                       </select>
                     </div>
                 </td>
@@ -110,7 +110,7 @@
                 </td>
               </tr>
             </table>
-              
+
           </div>
           <div class="form-group">
                 </div>
@@ -133,26 +133,26 @@
     </div>
   </div>
 
-  
+
   @push('scripts')
   <script type="text/javascript">
         $(document).ready(function() {
 	var max_fields      = 100; //maximum input boxes allowed
 	var wrapper   	  	= $(".input_fields_wrap"); //Fields wrapper
   var add_button      = $(".add_field_button"); //Add button ID
-	
+
 	var x = 1; //initlal text box count
 	$(add_button).click(function(e){ //on add input button click
 		e.preventDefault();
 		if(x < max_fields){ //max input box allowed
 			x++; //text box increment
-      
+
 			$(wrapper).append('<div><table><tr><td><select name="id_barang[]" id="" class="form-control"><option selected disabled>-----Pilih Jenis Barang-----</option>@foreach ($barang as $j)<option value="{{$j->id_barang}}">{{$j->nama_barang}}</option>@endforeach</select></div></td><td class="pl-3"><input type="number" name="jumlah[]" class="form-control" required placeholder="Masukan Jumlah" required></td></tr></table><a href="#" class="remove_field">Remove</a></div>');
 		}
   });
-  
 
-	
+
+
 	$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
 		e.preventDefault(); $(this).parent('div').remove(); x--;
 	})
@@ -179,5 +179,5 @@
         });
      });
 </script>
-  
+
 @endsection

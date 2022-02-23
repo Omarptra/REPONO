@@ -168,8 +168,6 @@
             </table>
 
           </div>
-          <div class="form-group">
-                </div>
 
            <div class="form-group">
                 <label for="">Tanggal Pinjam</label>

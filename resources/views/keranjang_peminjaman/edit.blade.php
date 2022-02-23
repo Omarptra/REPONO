@@ -15,8 +15,40 @@
             <div class="form-group">
                 <label for="status">Status Peminjam</label>
                 <select class="form-control" name="status" id="status">
-                    <option value="guru">Guru</option>
-                    <option value="siswa">Siswa</option>
+                    <option selected disabled>----- Pilih Status -----</option>
+                    <option value="Siswa">Siswa</option>
+                    <option value="Guru">Guru</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="kelasSiswa">Kelas</label>
+                <select class="form-control" name="kelasSiswa" id="kelasSiswa">
+                    <option selected disabled>----- Pilih Kelas -----</option>
+                    <option value="X">X</option>
+                    <option value="XI">XI</option>
+                    <option value="XII">XII</option>
+                    <option value="XIII">XIII</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="jurusan">Jurusan</label>
+                <select class="form-control" name="jurusan" id="jurusan">
+                    <option selected disabled>----- Pilih Jurusan -----</option>
+                    @foreach ($jurusans as $j)
+                        <option value="{{ $j->jurusan }}">{{ $j->jurusan }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="jurusanId">ID Jurusan</label>
+                <select class="form-control" name="jurusanId" id="jurusanId">
+                    <option selected disabled>----- Pilih ID Jurusan -----</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
                 </select>
             </div>
             <div class="form-group">
@@ -29,7 +61,7 @@
                   <option value="{{$r->id_barang}}">{{$r->nama_barang}}</option>
                       @endif
                 @endforeach
-                </select> 
+                </select>
             </div>
 
             <div class="form-group">
