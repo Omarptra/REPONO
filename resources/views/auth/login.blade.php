@@ -22,7 +22,7 @@
 
 <body class="bg-gradient-dark">
 
-  <div class="container login">
+  <div class="loginBody">
     <div class="cardBody d-flex">
       <div class="banner">
         <div class="text">
@@ -30,7 +30,7 @@
           <p class="text-center">Silahkan login untuk mengakses akun anda.</p>
         </div>
         <div class="img">
-          
+
         </div>
         <img src="{{url('assets/img/banner.jpg')}}" alt="">
       </div>
@@ -42,7 +42,7 @@
         <div class="form-item">
           <form method="POST" action="{{ route('login') }}">
             @csrf
-            
+
             <div class="username">
               <input type="username" id="username" @error('username') is-invalid @enderror name="username" value="{{ old('username') }}"  required  autocomplete="off" required >
               <label for="username" class="label-name">
@@ -53,9 +53,9 @@
             @error('email')
                 <strong style="color:red">{{ $message }}</strong>
             @enderror
-          
-            
-            
+
+
+
             <div class="password">
               <input type="password" id="password" @error('password') is-invalid @enderror name="password" required  autocomplete="off" required >
               <label for="password" class="label-name">
@@ -66,12 +66,12 @@
             @error('password')
                 <strong>{{ $message }}</strong
             @enderror
-          
-          
+
+
             <button type="submit" class="btn btn-dark btn-user btn-block">
               {{ __('Login') }}
             </button>
-          
+
           </form>
         </div>
         <div class="form-footer">

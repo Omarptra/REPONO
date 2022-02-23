@@ -81,10 +81,10 @@
             <label for="">Status Peminjaman</label>
             <select class="form-control" name="status" id="statusPinjam">
               <option selected disabled>----- Pilih Status -----</option>
-              <option value="siswa">Siswa</option>
-              <option value="guru">Guru</option>
+              <option value="Siswa">Siswa</option>
+              <option value="Guru">Guru</option>
             </select>
-            
+
             <div class="kelas hide" id="kelas">
               <label class="mt-4" for="">Kelas</label>
               <select class="form-control" name="kelasSiswa" id="kelasSiswa">
@@ -100,28 +100,49 @@
               <select class="form-control " name="jurusan" id="jurusan">
                 <option selected disabled>----- Pilih Jurusan -----</option>
                 @foreach ($jurusanX as $j)
-                  <option value="">{{ $j->jurusan }}</option>
+                  <option value="{{ $j->jurusan }}">{{ $j->jurusan }}</option>
                 @endforeach
-              </select> 
+              </select>
             </div>
             <div class="jurusanX hide" id="jurusanXX">
               <label class="mt-4" for="">Jurusan</label>
               <select class="form-control " name="jurusan" id="jurusan">
                 <option selected disabled>----- Pilih Jurusan -----</option>
                 @foreach ($jurusanXX as $j)
-                  <option value="">{{ $j->jurusan }}</option>
+                  <option value="{{ $j->jurusan }}">{{ $j->jurusan }}</option>
                 @endforeach
-              </select> 
+              </select>
             </div>
+            <div class="jurusanToi hide" id="jurusanToi">
+                <label class="mt-4" for="">Jurusan</label>
+                <select class="form-control " name="jurusan" id="jurusan">
+                  <option selected disabled>----- Pilih Jurusan -----</option>
+                  @foreach ($toi as $t)
+                    <option value="{{ $j->jurusan }}">{{ $t->jurusan }}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="jurusanId hide" id="jurusanId">
+                <label class="mt-4" for="">ID Jurusan</label>
+                <select class="form-control " name="jurusanId" id="jurusanId">
+                  <option selected disabled>----- Pilih ID Jurusan -----</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+              </div>
 
             <div class="jurusanGuru hide" id="jurusanGuru">
               <label class="mt-4" for="jurusan">Jurusan</label>
               <select class="form-control " name="jurusan" id="jurusan">
                 <option selected disabled>----- Pilih Jurusan -----</option>
                 @foreach ($jurusan as $j)
-                  <option value="">{{ $j->jurusan }}</option>
+                  <option value="{{ $j->jurusan }}">{{ $j->jurusan }}</option>
                 @endforeach
-              </select> 
+              </select>
             </div>
         </div>
           <div class="form-group">
@@ -182,7 +203,7 @@
 		if(x < max_fields){ //max input box allowed
 			x++; //text box increment
 
-			$(wrapper).append('<div><table><tr><td><select name="id_barang[]" id="" class="myselect"><option selected disabled>-----Pilih Jenis Barang-----</option>@foreach ($barang as $j)<option value="{{$j->id_barang}}">{{$j->nama_barang}}</option>@endforeach</select></div></td><td style="padding-left:73px"><input type="number" name="jumlah[]" class="form-control" required placeholder="Masukan Jumlah" required></td></tr></table><a href="#" class="remove_field">Remove</a></div>');
+			$(wrapper).append('<div><table><tr><td><select name="id_barang[]" id="" class="form-control"><option selected disabled>-----Pilih Jenis Barang-----</option>@foreach ($barang as $j)<option value="{{$j->id_barang}}">{{$j->nama_barang}}</option>@endforeach</select></div></td><td style="padding-left:73px"><input type="number" name="jumlah[]" class="form-control" required placeholder="Masukan Jumlah" required></td></tr></table><a href="#" class="remove_field">Remove</a></div>');
       $('.myselect').select2();
     }
   });
@@ -245,29 +266,37 @@ const kelas = document.getElementById('kelas');
 const jurusanGuru = document.getElementById('jurusanGuru');
 const jurusanX = document.getElementById('jurusanX');
 const jurusanXX = document.getElementById('jurusanXX');
+const jurusanToi = document.getElementById('jurusanToi');
+const jurusanId = document.getElementById('jurusanId');
 
 status.addEventListener('change', () => {
-  if (status.value == 'siswa') {
+  if (status.value == 'Siswa') {
     kelas.classList.remove('hide');
+    jurusanId.classList.remove('hide');
     jurusanGuru.classList.add('hide');
     kelasSiswa.addEventListener('change', () => {
       if (kelasSiswa.value == 'X') {
         jurusanX.classList.remove('hide');
-        jurusanXX.classList.add('hide')
+        jurusanToi.classList.add('hide');
+        jurusanXX.classList.add('hide');
       } else if (kelasSiswa.value == "XII" || kelasSiswa.value == 'XI') {
-        jurusanXX.classList.remove('hide')
+        jurusanXX.classList.remove('hide');
+        jurusanToi.classList.add('hide');
         jurusanX.classList.add('hide');
+      } else if (kelasSiswa.value == "XIII") {
+        jurusanToi.classList.remove('hide');
+        jurusanX.classList.add('hide');
+        jurusanXX.classList.add('hide');
       }
     })
-  } else if(status.value == 'guru') {
+  } else if(status.value == 'Guru') {
     jurusanGuru.classList.remove('hide');
     kelas.classList.add('hide');
+    jurusanId.classList.add('hide');
     jurusanX.classList.add('hide');
     jurusanXX.classList.add('hide');
   }
 })
-
-
 
 </script>
 @endpush

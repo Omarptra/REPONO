@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use auth;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Alert;
 use Illuminate\Http\Request;
 
@@ -26,48 +26,62 @@ class KeranjangpeminjamanController extends Controller
 
         $barang = DB::table('barangs')->get();
 
-        $keteranganX = "x";
-        $keteranganXX = "xx";
+        $keteranganX = "X";
+        $keteranganXX = "XX";
 
         $jurusan = DB::table('jurusans')->get();
         $jurusanX = DB::table('jurusans')->where('keterangan', $keteranganX)->get();
         $jurusanXX = DB::table('jurusans')->where('keterangan', $keteranganXX)->get();
-        
-        return view('keranjang_peminjaman.view', compact('peminjaman', 'barang', 'jurusan', 'jurusanX', 'jurusanXX'));
+        $toi = DB::table('jurusans')->where('id', 9)->get();
+
+        return view('keranjang_peminjaman.view', compact('peminjaman', 'barang', 'jurusan', 'jurusanX', 'jurusanXX', 'toi'));
     }
 
     public function store(Request $request)
     {
 
-        
-        for ($a=0; $a < count($request->id_barang); $a++) { 
+
+        for ($a=0; $a < count($request->id_barang); $a++) {
             $sin = DB::table('keranjang_peminjaman')->where('id_barang', $request->id_barang[$a])->count();
 
             if ($sin == 0) {
-    
+
                     $tes = DB::table('barangs')->where('id_barang', $request->id_barang[$a])->first();
                     if ($tes->jumlah < $request->jumlah[$a]) {
                         Alert::error('Jumlah tidak boleh melewati stok', 'Gagal');
                         return redirect()->back();
                     } else {
-                        DB::table('keranjang_peminjaman')->insert([
-                            'nama_peminjam' =>  $request->nama_peminjaman,
-                            'status' =>  $request->status,
-                            'id_barang' =>  $request->id_barang[$a],
-                            'jumlah_pinjam' => $request->jumlah[$a],
-                            'tanggal_pinjam' => $request->tanggal_pinjam,
-                            'tanggal_kembali' => $request->tanggal_kembali,
-                            'keterangan' => 'Belum Dikembalikan',
-                        ]);
+                        if ($request->status == "Siswa") {
+                            DB::table('keranjang_peminjaman')->insert([
+                                'nama_peminjam' =>  ucwords($request->nama_peminjaman),
+                                'status' =>  $request->status." kelas ".$request->kelasSiswa." ".$request->jurusan." ".$request->jurusanId,
+                                'id_barang' =>  $request->id_barang[$a],
+                                'jumlah_pinjam' => $request->jumlah[$a],
+                                'tanggal_pinjam' => $request->tanggal_pinjam,
+                                'tanggal_kembali' => $request->tanggal_kembali,
+                                'keterangan' => 'Belum Dikembalikan',
+                            ]);
+
+                        } else {
+                            DB::table('keranjang_peminjaman')->insert([
+                                'nama_peminjam' =>  ucwords($request->nama_peminjaman),
+                                'status' =>   $request->status." jurusan ".$request->jurusan,
+                                'id_barang' =>  $request->id_barang[$a],
+                                'jumlah_pinjam' => $request->jumlah[$a],
+                                'tanggal_pinjam' => $request->tanggal_pinjam,
+                                'tanggal_kembali' => $request->tanggal_kembali,
+                                'keterangan' => 'Belum Dikembalikan',
+                            ]);
+                        }
                     }
             }
         }
-        
+
         if ($sin > 0) {
             Alert::error('Salah satu barang Sudah Ada Di Keranjang');
             return redirect()->back();
         }
-        
+
         Alert::success('Success', 'Data Telah Terinput');
         return redirect()->back();
 
