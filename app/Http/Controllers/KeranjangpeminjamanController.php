@@ -52,27 +52,19 @@ class KeranjangpeminjamanController extends Controller
                         return redirect()->back();
                     } else {
                         if ($request->status == "Siswa") {
-                            DB::table('keranjang_peminjaman')->insert([
-                                'nama_peminjam' =>  ucwords($request->nama_peminjaman),
-                                'status' =>  $request->status." | ".$request->kelasSiswa." ".$request->jurusan." ".$request->jurusanId,
-                                'id_barang' =>  $request->id_barang[$a],
-                                'jumlah_pinjam' => $request->jumlah[$a],
-                                'tanggal_pinjam' => $request->tanggal_pinjam,
-                                'tanggal_kembali' => $request->tanggal_kembali,
-                                'keterangan' => 'Belum Dikembalikan',
-                            ]);
-
-                        } else {
-                            DB::table('keranjang_peminjaman')->insert([
-                                'nama_peminjam' =>  ucwords($request->nama_peminjaman),
-                                'status' =>   $request->status." | ".$request->jurusan,
-                                'id_barang' =>  $request->id_barang[$a],
-                                'jumlah_pinjam' => $request->jumlah[$a],
-                                'tanggal_pinjam' => $request->tanggal_pinjam,
-                                'tanggal_kembali' => $request->tanggal_kembali,
-                                'keterangan' => 'Belum Dikembalikan',
-                            ]);
+                            $statusDetails = $request->status." - ".$request->kelasSiswa." ".$request->jurusan." ".$request->jurusanId;
+                        } else if ($request->status == "Guru") {
+                            $statusDetails = $request->status." | ".$request->jurusan;
                         }
+                        DB::table('keranjang_peminjaman')->insert([
+                            'nama_peminjam' => $request->nama_peminjaman,
+                            'status' => $statusDetails,
+                            'id_barang' =>  $request->id_barang[$a],
+                            'jumlah_pinjam' => $request->jumlah[$a],
+                            'tanggal_pinjam' => $request->tanggal_pinjam,
+                            'tanggal_kembali' => $request->tanggal_kembali,
+                            'keterangan' => 'Belum Dikembalikan',
+                        ]);
                     }
             }
         }
@@ -140,7 +132,7 @@ class KeranjangpeminjamanController extends Controller
         //     DB::table('barangs')->where('id_barang', $request->id_barang)->update([
         //         'jumlah' => $hitung
         //     ]);
-        // }
+            // }
         $tes = DB::table('barangs')->where('id_barang', $request->id_barang)->first();
         if ($tes->jumlah < $request->jumlah) {
             Alert::error('Jumlah tidak boleh melewati stok', 'Gagal');

@@ -30,7 +30,6 @@
                     <th>Nama</th>
                     <th>Email</th>
                     <th>Username</th>
-                    <th>Password</th>
                     <th>Level</th>
                     <th>Opsi</th>
                 </tr>
@@ -42,7 +41,6 @@
                     <td class="align-middle name">{{ $u->name }}</td>
                      <td class="align-middle name">{{ $u->email }}</td>
                     <td class="align-middle username">{{ $u->username }}</td>
-                    <td class="align-middle password">Password Tidak Ditampilkan</td>
                     <td class="align-middle level">{{ $u->level }}</td>
 
                     <td>
