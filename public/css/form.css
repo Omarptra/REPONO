@@ -1,0 +1,177 @@
+.email,
+.password,
+.username,
+.regEmail,
+.regPassword,
+.regConfPassword,
+.role,
+.jurusan,
+.brand,
+.item-name,
+.category,
+.description {
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  margin: 1.2rem 0;
+}
+
+.email input,
+.password input,
+.username input,
+.regEmail input,
+.regPassword input,
+.regConfPassword input,
+.role input,
+.jurusan input,
+.brand input,
+.item-name input,
+.category input,
+.description input {
+  width: 100%;
+  height: 100%;
+  padding-top: 20px;
+  border: none;
+  background: transparent;
+  color: black;
+  z-index: 3;
+}
+
+.email input:focus,
+.password input:focus,
+.username input:focus,
+.regEmail input:focus,
+.regPassword input:focus,
+.regConfPassword input:focus,
+.role input:focus,
+.jurusan input:focus,
+.brand input:focus,
+.item-name input:focus,
+.category input:focus,
+.description input:focus {
+  outline: none;
+}
+
+.email input:focus + .label-name .content-name,
+.email input:valid + .label-name .content-name,
+.password input:focus + .label-name .content-name,
+.password input:valid + .label-name .content-name,
+.username input:focus + .label-name .content-name,
+.username input:valid + .label-name .content-name,
+.regEmail input:focus + .label-name .content-name,
+.regEmail input:valid + .label-name .content-name,
+.regPassword input:focus + .label-name .content-name,
+.regPassword input:valid + .label-name .content-name,
+.regConfPassword input:focus + .label-name .content-name,
+.regConfPassword input:valid + .label-name .content-name,
+.role input:focus + .label-name .content-name,
+.role input:valid + .label-name .content-name,
+.jurusan input:focus + .label-name .content-name,
+.jurusan input:valid + .label-name .content-name,
+.brand input:focus + .label-name .content-name,
+.brand input:valid + .label-name .content-name,
+.item-name input:focus + .label-name .content-name,
+.item-name input:valid + .label-name .content-name,
+.category input:focus + .label-name .content-name,
+.category input:valid + .label-name .content-name,
+.description input:focus + .label-name .content-name,
+.description input:valid + .label-name .content-name {
+  transform: translateY(-100%);
+  color: black;
+  font-size: 14px;
+}
+
+.email input:focus + .label-name::after,
+.email input:valid + .label-name::after,
+.password input:focus + .label-name::after,
+.password input:valid + .label-name::after,
+.username input:focus + .label-name::after,
+.username input:valid + .label-name::after,
+.regEmail input:focus + .label-name::after,
+.regEmail input:valid + .label-name::after,
+.regPassword input:focus + .label-name::after,
+.regPassword input:valid + .label-name::after,
+.regConfPassword input:focus + .label-name::after,
+.regConfPassword input:valid + .label-name::after,
+.role input:focus + .label-name::after,
+.role input:valid + .label-name::after,
+.jurusan input:focus + .label-name::after,
+.jurusan input:valid + .label-name::after,
+.brand input:focus + .label-name::after,
+.brand input:valid + .label-name::after,
+.item-name input:focus + .label-name::after,
+.item-name input:valid + .label-name::after,
+.category input:focus + .label-name::after,
+.category input:valid + .label-name::after,
+.description input:focus + .label-name::after,
+.description input:valid + .label-name::after {
+  transform: translateX(0%);
+}
+
+.email label,
+.password label,
+.username label,
+.regEmail label,
+.regPassword label,
+.regConfPassword label,
+.role label,
+.jurusan label,
+.brand label,
+.item-name label,
+.category label,
+.description label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  border-bottom: 1px solid gray;
+  color: gray;
+  z-index: 1;
+  font-weight: 600;
+  margin-bottom: 0;
+  cursor: text;
+}
+
+.email label::after,
+.password label::after,
+.username label::after,
+.regEmail label::after,
+.regPassword label::after,
+.regConfPassword label::after,
+.role label::after,
+.jurusan label::after,
+.brand label::after,
+.item-name label::after,
+.category label::after,
+.description label::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-bottom: 1px solid black;
+  left: 0;
+  bottom: -1px;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.email .content-name,
+.password .content-name,
+.username .content-name,
+.regEmail .content-name,
+.regPassword .content-name,
+.regConfPassword .content-name,
+.role .content-name,
+.jurusan .content-name,
+.brand .content-name,
+.item-name .content-name,
+.category .content-name,
+.description .content-name {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
