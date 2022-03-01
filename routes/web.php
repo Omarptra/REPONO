@@ -59,7 +59,7 @@ Route::get('/user/edit/{id}', 'UserController@edit');
 Route::get('/peminjaman', 'PeminjamanController@index');
 Route::post('/peminjaman/store', 'PeminjamanController@store');
 Route::get('/peminjaman/edit/{id_peminjaman}', 'PeminjamanController@edit');
-Route::get('/peminjaman/status/{id_peminjaman}/{id_barang}', 'PeminjamanController@status');
+Route::get('/peminjaman/keterangan/{id_peminjaman}/{id_barang}', 'PeminjamanController@keterangan');
 Route::get('/peminjaman/detail/{id_peminjaman}', 'PeminjamanController@detail');
 Route::post('/peminjaman/update', 'PeminjamanController@update');
 Route::get('/peminjaman/delete/{id_peminjaman}', 'PeminjamanController@delete');

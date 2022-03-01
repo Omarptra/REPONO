@@ -29,9 +29,6 @@
           <h1>Selamat Datang</h1>
           <p class="text-center">Silahkan login untuk mengakses akun anda.</p>
         </div>
-        <div class="img">
-
-        </div>
         <img src="{{url('assets/img/banner.jpg')}}" alt="">
       </div>
       <div class="form flex-column d-flex p-5">

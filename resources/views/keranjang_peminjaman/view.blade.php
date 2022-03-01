@@ -152,7 +152,7 @@
               <tr>
                 <td>
                   <label for="">Nama Barang</label>
-                      <select class="form-control" name="id_barang[]" id="" class="myselect" style="width:200px">
+                      <select class="form-control" name="id_barang[]" style="width:200px">
                           <option selected disabled>Pilih Barang</option>
                           @foreach ($barang as $j)
                           <option value="{{$j->id_barang}}">{{$j->nama_barang}}</option>
@@ -169,7 +169,7 @@
 
           </div>
 
-           <div class="form-group">
+           <div class="form-group mt-4">
                 <label for="">Tanggal Pinjam</label>
                 <input type="date" name="tanggal_pinjam" class="form-control" required>
             </div>
@@ -201,7 +201,7 @@
 		if(x < max_fields){ //max input box allowed
 			x++; //text box increment
 
-			$(wrapper).append('<div><table><tr><td><select name="id_barang[]" id="" class="form-control"><option selected disabled>-----Pilih Jenis Barang-----</option>@foreach ($barang as $j)<option value="{{$j->id_barang}}">{{$j->nama_barang}}</option>@endforeach</select></div></td><td style="padding-left:73px"><input type="number" name="jumlah[]" class="form-control" required placeholder="Masukan Jumlah" required></td></tr></table><a href="#" class="remove_field">Remove</a></div>');
+			$(wrapper).append('<div><table><tr><td><select name="id_barang[]" style="width:200px" class="form-control mt-3"><option selected disabled>Pilih Barang</option>@foreach ($barang as $j)<option value="{{$j->id_barang}}">{{$j->nama_barang}}</option>@endforeach</select></div></td><td class="pl-3 "><input type="number" name="jumlah[]" class="form-control mt-3" required placeholder="Masukan Jumlah" required></td></tr></table><a href="#" class="remove_field">Remove</a></div>');
       $('.myselect').select2();
     }
   });

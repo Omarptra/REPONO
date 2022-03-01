@@ -22,6 +22,7 @@
   <!-- Custom styles for this page -->
   <link href="{{url('assets/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css">
 
 
 </head>
@@ -32,13 +33,13 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav sidebar sidebar-dark accordion sidebar-body" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="https://smkn4bdg.sch.id/">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <img src="" alt="">
-        </div>
+      <a class="sidebar-brand d-flex align-items-center flex-column justify-content-center" href="https://smkn4bdg.sch.id/">
+        {{-- <div class="sidebar-brand-icon">
+            <img src="assets/img/logoRepono.png" alt="" width="30">
+        </div> --}}
         <div class="sidebar-brand-text mx-1">SMKN 4 Bandung</div>
       </a>
 
@@ -357,10 +358,10 @@
         </div>
         <div class="modal-body">Klik "Logout" jika anda ingin keluar.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
           <form id="logout-form" action="{{ route('logout') }}" method="POST">
               @csrf
-              <button class="btn btn-dark" type="submit">Logout</button>
+              <button class="btn btn-primary" type="submit">Logout</button>
           </form>
         </div>
       </div>

@@ -125,7 +125,7 @@ class PeminjamanController extends Controller
         return redirect()->back();
     }
 
-    public function status($id, $id2)
+    public function keterangan($id, $id2)
     {
         $cek = DB::table('peminjaman')->where('id_peminjaman', $id)->first();
         $cek2 = DB::table('barangs')->where('id_barang', $id2)->first();
