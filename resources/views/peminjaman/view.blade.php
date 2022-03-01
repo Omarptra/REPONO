@@ -44,7 +44,7 @@
 </div>
 <div class="card-body">
   <div class="table-responsive">
-    {{-- <button class="btn btn-success" data-toggle="modal" data-target="#tambah">Tambah Data</button>--}}
+    {{-- <button class="btn btn-success" data-toggle="modal" data-target="#tambah">Tambah Data</button> --}}
     <a href="/peminjaman/export_excel" class="btn btn-warning my-3" target="_blank">EXPORT EXCEL</a>
       <br>
       <br>

@@ -1,4 +1,5 @@
-@extends('layouts.layout') @section('content')
+@extends('layouts.layout')
+@section('content')
 <title>Input Data</title>
 <div class="card-header py-3">
     <h6 class="m-0 font-weight-bold text-dark">Input Data</h6>
@@ -10,7 +11,7 @@
          
           <div class="form-group">
             <label for="">Nama Barang</label>
-                       <select name="id_barang" class="myselect" style="width:100%">
+                       <select name="id_barang" class="form-control" style="width:100%">
                           <option selected disabled>Pilih Barang</option>
                           @foreach ($barang as $j)
                           <option value="{{$j->id_barang}}">{{$j->nama_barang}}</option>
@@ -59,7 +60,7 @@
              
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <a href="/keranjang_masuk" class="btn btn-default" data-dismiss="modal">Cancel</a>
           <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
 </div>

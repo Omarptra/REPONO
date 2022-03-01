@@ -50,6 +50,7 @@
             <td>{{$masuk->tanggal_masuk}}</td>
         </tr>
     </table>
+    <a href="/keranjang_masuk" class="btn btn-primary px-5 mt-3">Back</a>
 </div>
 
 @endsection

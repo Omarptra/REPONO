@@ -33,7 +33,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav sidebar sidebar-dark accordion sidebar-body" id="accordionSidebar">
+    <ul class="navbar-nav sidebar sidebar-dark accordion sidebar-body" style="background: #2d62b1 !important;" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center flex-column justify-content-center" href="https://smkn4bdg.sch.id/">

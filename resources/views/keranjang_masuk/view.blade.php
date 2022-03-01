@@ -3,6 +3,8 @@
 <title>Data Keranjang Barang Masuk</title>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.js"></script>
+<link href="{{url('assets/css/style.css')}}" rel="stylesheet">
+
 <div class="card-header py-3">
   <h6 class="m-0 font-weight-bold text-dark">Data Keranjang Barang Masuk</h6>
 </div>
