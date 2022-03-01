@@ -102,7 +102,7 @@ class DatatableController extends Controller
 
         return datatables()->of($peminjaman)
         ->addColumn('action', function ($u) {
-            if ($u->status=='Belum Dikembalikan') {
+            if ($u->keterangan=='Belum Dikembalikan') {
                 return '<a href="/peminjaman/edit/'.$u->id_peminjaman.'" class="btn btn-primary btn-sm ml-2"">Edit </a>
                 <a href="/peminjaman/detail/'.$u->id_peminjaman.'" class="btn btn-warning btn-sm ml-2"">Detail </a>
                 <a href="/peminjaman/status/'.$u->id_peminjaman.'/'.$u->id_barang.'" class="btn btn-success btn-sm ml-2"  onclick="return confirm("Apakah Anda Yakin ?")">Kembalikan </a>

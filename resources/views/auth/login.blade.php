@@ -44,20 +44,20 @@
             @csrf
 
             <div class="username">
-              <input type="username" id="username" @error('username') is-invalid @enderror name="username" value="{{ old('username') }}"  required  autocomplete="off" required >
+              <input type="username" id="username" @error('username') is-invalid @enderror name="username" value="{{ old('username') }}"  autocomplete="off" required >
               <label for="username" class="label-name">
                 <span class="content-name">Username</span>
               </label>
             </div>
 
-            @error('email')
+            @error('username')
                 <strong style="color:red">{{ $message }}</strong>
             @enderror
 
 
 
             <div class="password">
-              <input type="password" id="password" @error('password') is-invalid @enderror name="password" required  autocomplete="off" required >
+              <input type="password" id="password" @error('password') is-invalid @enderror name="password"   autocomplete="off" required >
               <label for="password" class="label-name">
                 <span class="content-name">Password</span>
               </label>
