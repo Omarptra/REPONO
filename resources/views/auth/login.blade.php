@@ -65,7 +65,7 @@
             @enderror
 
 
-            <button type="submit" class="btn btn-dark btn-user btn-block">
+            <button type="submit" class="submit-btn btn btn-dark btn-user btn-block">
               {{ __('Login') }}
             </button>
 

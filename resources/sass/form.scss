@@ -9,7 +9,7 @@
         padding-top: 20px;
         border: none;
         background: transparent;
-        color: black;
+        color: rgba(0, 0, 0);
         z-index: 3;
         &:focus {
             outline: none;
@@ -17,7 +17,7 @@
         &:focus + .label-name .content-name,
         &:valid + .label-name .content-name  {
             transform: translateY(-100%);
-            color: black;
+            color: #2d62b1;
             font-size: 14px;
         }
         &:focus + .label-name::after,
@@ -31,9 +31,10 @@
         left: 0;
         width: 100%;
         height: 100%;
+        
         text-align: left;
-        border-bottom: 1px solid gray;
-        color: gray;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.501);
+        color: rgba(0, 0, 0, 0.501);
         z-index: 1;
         font-weight: 600;
         margin-bottom: 0;
@@ -43,7 +44,7 @@
             position: absolute;
             height: 100%;
             width: 100%;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid #2d62b1;
             left: 0;
             bottom: -1px;
             transform: translateX(-100%);
@@ -56,4 +57,9 @@
         left: 0;
         transition: all 0.3s ease;
     }
+}
+
+.submit-btn {
+    background: #2d62b1;
+    border: none;
 }
